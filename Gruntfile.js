@@ -47,20 +47,25 @@ module.exports = function(grunt) {
       }
     },
     mochaTest: {
+      options: {
+        reporter: 'spec'
+      },
       unit: {
-        options: {
-          reporter: 'spec'
-        },
         // Register helpers before, it includes a log4js mock which has to be loaded as early as possible
         src: ['dist/test/helpers/**/*.js', 'dist/test/unit/**/*.js']
       },
       integration: {
         options: {
-          reporter: 'spec',
           timeout: 5000
         },
         // Register helpers before, it includes a log4js mock which has to be loaded as early as possible
         src: ['dist/test/helpers/**/*.js', 'dist/test/integration/**/*.js']
+      },
+      e2e: {
+        options: {
+          timeout: 30000
+        },
+        src: ['dist/test/helpers/**/*.js', 'dist/test/e2e/e2e-tests.js']
       }
     },
     mocha_istanbul: {
