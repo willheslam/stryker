@@ -42,7 +42,7 @@ var MutatorOrchestrator = (function () {
         sourceFiles.forEach(function (sourceFile) {
             try {
                 var fileContent = fileUtils.readFile(sourceFile);
-                fileContent = babel_core_1.default.transform(fileContent, { plugins: ["transform-object-rest-spread"] }).code;
+                fileContent = babel_core_1.transform(fileContent, { plugins: ["transform-object-rest-spread", "transform-runtime"] }).code;
                 //somehow customise this compiler? ^^
                 _this.reportFileRead(sourceFile, fileContent);
                 var abstractSyntaxTree = parserUtils.parse(fileContent);
